@@ -14,4 +14,26 @@ sudo ufw enable
 sudo ufw allow 80
 sudo ufw reload
 
+# If you are already using ssh key auth
+# Copy root .ssh files to user home directory
+cd
+rsync --archive --chown=user:user ~/.ssh /home/user
 
+# Now login as user
+
+# tmux settings
+sudo apt-get install tmux
+cd && wget https://raw.githubusercontent.com/Fu-Om/dotfiles/master/.tmux.conf
+
+# vim settings
+sudo apt install -y git build-essential libtinfo-dev
+sudo apt install -y python3-dev libxmu-dev libxpm-dev libgtk-3-dev
+cd && mkdir -p work/github
+cd work/github && git clone https://github.com/vim/vim.git
+cd vim
+echo "--enable-gui=gtk3 --enable-python3interp=dynamic --enable-fail-if-missing" > copt.txt
+./configure $(cat ./copt.txt)
+make
+sudo make install
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 100
+sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/vim 100
