@@ -66,3 +66,6 @@ nnoremap <C-Q><C-H> <C-W><C-H>
 map <Space>s <esc>:w<CR>
 " set tab character to Shift+Tab
 inoremap <S-Tab> <C-V><Tab>
+
+" set <++> as placeholder
+inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l

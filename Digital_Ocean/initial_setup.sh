@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # from: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
 # Setup script after creating Ubuntu VPS
 
@@ -49,4 +49,7 @@ sudo make install
 sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 100
 sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/vim 100
 
+# ssh deamon settings
+sed -i 's/PermitRootLogin yes/#PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i '/#PermitRootLogin yes/a PermitRootLogin no/' /etc/ssh/sshd_config
 
